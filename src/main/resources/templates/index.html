@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Book Library System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            color: #1e293b;
+        }
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        a:hover {
+            background-color: #2563eb;
+        }
+    </style>
 </head>
 <body>
-<h1 th:text="${message}"></h1>
+<h1>📚 Book Library Management System</h1>
+<a th:href="@{/book/list}">Go to Book List</a >
 </body>
 </html>
