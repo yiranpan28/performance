@@ -43,4 +43,12 @@ public class BookService {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
     }
+
+    // 新增搜索方法
+    public List<Book> searchBooks(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
+            return bookRepository.findAll();
+        }
+        return bookRepository.findByBookNameContainingIgnoreCaseOrAuthorContainingIgnoreCase(keyword, keyword);
+    }
 }
