@@ -37,4 +37,10 @@ public class BookService {
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
+
+    // 根据ID获取书籍（用于编辑页面回显）
+    public Book getBookByIdForEdit(Long id) {
+        return bookRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Book not found with id: " + id));
+    }
 }

@@ -47,4 +47,21 @@ public class BookController {
         bookService.deleteBook(id);
         return "redirect:/book/list";
     }
+
+    // 跳转到编辑页面
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        Book book = bookService.getBookByIdForEdit(id);
+        model.addAttribute("book", book);
+        return "editBook";
+    }
+
+    // 提交编辑更新
+    @PostMapping("/update/{id}")
+    public String updateBook(@PathVariable Long id, @Valid @ModelAttribute Book book) {
+        book.setId(id); // 确保ID不变
+        bookService.saveBook(book);
+        return "redirect:/book/list";
+    }
+
 }
